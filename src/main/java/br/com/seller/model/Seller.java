@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Seller {
@@ -12,8 +14,11 @@ public class Seller {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	private String name;
 
+	@NotEmpty(message = "Name is not empty.")
+	@Size(min = 11, max = 11, message = "CPF must be 11 characters long.")
 	private String cpf;
 
 	Seller() {
@@ -24,7 +29,6 @@ public class Seller {
 		super();
 		this.id = id;
 		this.name = name;
-
 		this.cpf = cpf;
 	}
 
