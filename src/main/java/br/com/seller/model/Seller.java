@@ -9,15 +9,15 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Seller {
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
-	private String name;
-
 	@NotEmpty(message = "Name is not empty.")
+	private String name;
+	
+	@NotEmpty(message = "CPF is not empty.")
 	@Size(min = 11, max = 11, message = "CPF must be 11 characters long.")
 	private String cpf;
 

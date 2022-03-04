@@ -6,6 +6,8 @@ import br.com.seller.model.Seller;
 
 public interface SellerRepository extends JpaRepository<Seller, Long>{
 	
+	
+
 		
 
 }

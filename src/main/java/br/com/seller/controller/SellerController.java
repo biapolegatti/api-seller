@@ -1,8 +1,8 @@
 package br.com.seller.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +22,13 @@ public class SellerController {
 
 	@Autowired
 	private SellerService service;
-
+	
+	
 	@GetMapping
-	public List<Seller> list() {
-		return service.find();
-
+	public Page<Seller> listByName(Pageable pageable) {
+		return service.find(pageable);
 	}
-
+	
 	@GetMapping("/{id}")
 	public Seller listById(@PathVariable Long id)  {
 		return service.findById(id);
@@ -51,5 +51,9 @@ public class SellerController {
 	public void remove(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-
-}
+	
+	
+	
+	
+	
+	}
