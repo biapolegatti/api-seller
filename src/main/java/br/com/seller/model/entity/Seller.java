@@ -1,4 +1,4 @@
-package br.com.seller.model;
+package br.com.seller.model.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,16 +20,15 @@ public class Seller {
 	@NotEmpty(message = "CPF is not empty.")
 	@Size(min = 11, max = 11, message = "CPF must be 11 characters long.")
 	private String cpf;
+	
+	//private Address addresses;
 
-	Seller() {
-
+	public Long getId() {
+		return id;
 	}
 
-	public Seller(Long id, String name, String cpf) {
-		super();
+	public void setId(Long id) {
 		this.id = id;
-		this.name = name;
-		this.cpf = cpf;
 	}
 
 	public String getName() {
@@ -40,14 +39,6 @@ public class Seller {
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public String getCpf() {
 		return cpf;
 	}
@@ -56,4 +47,6 @@ public class Seller {
 		this.cpf = cpf;
 	}
 
+
+	
 }

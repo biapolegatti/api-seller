@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
-import br.com.seller.model.Seller;
+import br.com.seller.model.entity.Seller;
 import br.com.seller.service.SellerService;
 
 @RestController
@@ -22,15 +23,17 @@ public class SellerController {
 
 	@Autowired
 	private SellerService service;
-	
-	
+
+	@Autowired
+	RestTemplate restTemplate;
+
 	@GetMapping
 	public Page<Seller> listByName(Pageable pageable) {
 		return service.find(pageable);
 	}
-	
+
 	@GetMapping("/{id}")
-	public Seller listById(@PathVariable Long id)  {
+	public Seller listById(@PathVariable Long id) {
 		return service.findById(id);
 
 	}
@@ -51,9 +54,5 @@ public class SellerController {
 	public void remove(@PathVariable Long id) {
 		service.deleteById(id);
 	}
-	
-	
-	
-	
-	
-	}
+
+}

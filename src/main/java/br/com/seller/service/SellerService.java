@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import br.com.seller.exception.ResourceNotFoundException;
-import br.com.seller.model.Seller;
+import br.com.seller.model.entity.Seller;
 import br.com.seller.repository.SellerRepository;
 
 @Service
@@ -17,15 +17,15 @@ public class SellerService {
 	private SellerRepository repository;
 
 	public Page<Seller> find(Pageable pageable) {
-		
 
 		return repository.findAll(pageable);
 	}
 
-		
 	public Seller findById(Long id) {
 		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Seller not found"));
 	}
+
+//	private static String cepUrl = "viacep.com.br/ws/01001000/json/";
 
 	public Seller save(Seller seller) {
 		return repository.save(seller);
