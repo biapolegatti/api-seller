@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -15,13 +16,13 @@ public class Seller {
 	private Long id;
 
 	@NotEmpty(message = "Name is not empty.")
+	@NotNull
 	private String name;
 	
 	@NotEmpty(message = "CPF is not empty.")
 	@Size(min = 11, max = 11, message = "CPF must be 11 characters long.")
 	private String cpf;
 	
-	//private Address addresses;
 
 	public Long getId() {
 		return id;
